@@ -5,6 +5,8 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/spotlight.sh
-
+User=remy
+Group=remy
 [Install]
 WantedBy=multi-user.target
+
