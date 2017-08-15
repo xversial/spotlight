@@ -24,10 +24,14 @@ sudo ln -s /opt/spotlight/spotlight.{service,timer} /etc/systemd/system/
 sudo ln -s /opt/spotlight/spotlight.sh /usr/bin/
 ```
 4. Change the target user in the `spotlight.service` file
-5. Enable and start the service and the timer:
+5. Enable and start the timer:
 ```bash
 sudo systemctl deamon-reload
-sudo systemctl enable spotlight.service spotlight.timer
+sudo systemctl enable spotlight.timer
 sudo systemctl start spotlight.service
 ```
-
+6. Enable the screensaver image:
+```bash
+gsettings set org.gnome.desktop.screensaver picture-options "zoom"
+gsettings set org.gnome.desktop.screensaver picture-uri "file://$HOME/.spotlight/.background.jpg"
+```

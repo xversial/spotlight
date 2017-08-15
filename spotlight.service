@@ -3,10 +3,8 @@ Description=Spotlight
 After=network-online.target
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/usr/bin/spotlight.sh
 User=remy
-Group=remy
-[Install]
-WantedBy=multi-user.target
-
+StandardOutput=syslog
+StandardError=syslog

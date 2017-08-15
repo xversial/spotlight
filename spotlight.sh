@@ -20,8 +20,7 @@ fullpath="$directory$(date +"%Y%m%d%H%M")-$slug.jpg"
 	
 wget -qO "$fullpath" "$landscapeUrl"
 
-gsettings set org.gnome.desktop.screensaver picture-options "zoom"
-gsettings set org.gnome.desktop.screensaver picture-uri "file://$fullpath"
+ln -sf $fullpath "$directory/.background.jpg"
 
 notify-send "Screensaver changed" "$title ($titleUrl)" --icon=preferences-desktop-wallpaper
 echo "Screensaver changed to $title ($titleUrl)" | systemd-cat -t spotlight
