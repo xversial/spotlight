@@ -33,5 +33,5 @@ sudo systemctl start spotlight.service
 6. Enable the screensaver image:
 ```bash
 gsettings set org.gnome.desktop.screensaver picture-options "zoom"
-gsettings set org.gnome.desktop.screensaver picture-uri "file://$HOME/.spotlight/.background.jpg"
-```
+gsettings set org.gnome.desktop.screensaver picture-uri "file://$HOME/.spotlight/.screensaver.jpg"
+    ```
