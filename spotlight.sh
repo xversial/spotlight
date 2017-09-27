@@ -20,6 +20,9 @@ fullpath="$directory$(date +"%Y%m%d%H%M")-$slug.jpg"
 	
 wget -qO "$fullpath" "$landscapeUrl"
 
+oldPicture=`readlink -f "$directory/.screensaver.jpg"`
+ln -sf $oldPicture "$directory/.background.jpg"
+
 ln -sf $fullpath "$directory/.screensaver.jpg"
 
 notify-send "Screensaver changed" "$title ($titleUrl)" --icon=preferences-desktop-wallpaper
