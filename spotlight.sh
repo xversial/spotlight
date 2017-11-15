@@ -11,9 +11,9 @@ landscapeUrl=$(echo $item | jq -r ".ad.image_fullscreen_001_landscape.u")
 title=$(echo $item | jq -r ".ad.title_text.tx")
 titleUrl=$(echo $item | jq -r ".ad.title_destination_url.u" | perl -pe 's/.*?(http.*)/\1/')
 
-if [ ! -d $path ]
+if [ ! -d $directory ]
 then
-	mkdir -p $path
+	mkdir -p $directory
 fi
 slug=$(echo "$title" | iconv -t ascii//TRANSLIT | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
 fullpath="$directory$(date +"%Y%m%d%H%M")-$slug.jpg"
