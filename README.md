@@ -26,7 +26,7 @@ This script depends on jq binary. You need to install it before launching the sc
 4. Change the target user in the `spotlight.service` file
 5. Enable and start the timer:
     ```bash
-    sudo systemctl deamon-reload
+    sudo systemctl daemon-reload
     sudo systemctl enable spotlight.timer
     sudo systemctl start spotlight.service
     ```
