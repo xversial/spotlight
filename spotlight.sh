@@ -1,9 +1,13 @@
 #! /bin/bash
 
+set -e
+
 directory="$HOME/.spotlight"
 
+cd $directory
+
 # Get image info
-item=$(wget -qO- "https://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&ua=WindowsShellClient&lc=fr,fr-FR&ctry=FR" | jq -r ".batchrsp.items | .[0].item" | sed 's/var adData =//' | sed -e '/;/q' |sed -e 's/;//')
+item=$(curl --silent "https://arc.msn.com/v3/Delivery/Placement?pid=209567&fmt=json&ua=WindowsShellClient&lc=fr,fr-FR&ctry=FR&cdm=1" | jq -r ".batchrsp.items | .[0].item" | sed 's/var adData =//' | sed -e '/;/q' |sed -e 's/;//')
 if [ -z "$item" ]
 then
 	echo "Spotlight refresh failed : no internet connection" | systemd-cat -t spotlight
@@ -23,7 +27,7 @@ filename="$(date +"%Y%m%d%H%M")-$(echo "$title" | iconv -t ascii//TRANSLIT | sed
 fullpath="$directory/$filename"
 
 # Download image
-wget -qO "$fullpath" "$landscapeUrl"
+curl --silent --output "$fullpath" "$landscapeUrl"
 
 # Update background link with old screensaver image
 oldPicture=`readlink -f "$directory/.screensaver.jpg"`
