@@ -1,10 +1,11 @@
 [Unit]
 Description=Spotlight
-After=network-online.target
+Wants=network-online.target graphical-session.target
+After=network-online.target graphical-session.target
 
 [Service]
-Type=oneshot
-ExecStart=/usr/bin/spotlight.sh
+Type=simple
+ExecStart=/usr/bin/env bash /usr/bin/spotlight.sh
 User=remy
-StandardOutput=syslog
-StandardError=syslog
+StandardOutput=journal
+StandardError=journal
