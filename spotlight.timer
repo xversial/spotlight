@@ -2,9 +2,9 @@
 Description=Runs Spotlight daily
 
 [Timer]
-OnCalendar=daily
+OnCalendar=*:00:00
 Persistent=true
 Unit=spotlight.service
 
 [Install]
-WantedBy=default.target
+WantedBy=timers.target

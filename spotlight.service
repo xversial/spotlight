@@ -5,4 +5,6 @@ After=network-online.target graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/env bash spotlight.sh
+ExecStart=/usr/bin/env bash /usr/bin/spotlight.sh
+StandardOutput=journal
+StandardError=journal
